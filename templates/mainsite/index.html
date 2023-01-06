@@ -1,0 +1,29 @@
+{% load static %}
+<!-- HTML Code begins -->
+<!DOCTYPE html>
+<html lang = 'en'>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+  <title>முன்னோடி தேடல்</title>
+  <!-- Stylesheets -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <link href="{% static 'css/rent_style.css' %}" rel="stylesheet" type="text/css" />
+</head>
+<body>
+  <main class ='main'>
+      <div class = "center">
+      <img src = "{% static 'img/logo.png' %}" style="width:auto; height:30%"><br>
+      <h2>கமாவால் பிரிக்கப்பட்ட சொற்களை உள்ளிடவும்.</h2>
+      <br>
+      <form action = "/mainsite/results" method = "post">
+        {% csrf_token %}
+        <input type="text" id="search1" name="inpkeywords">
+        <br>
+        &nbsp;&nbsp;<button class = "btn btn-dark" type="submit" name="submit" value="Search">தேடு</button>
+      </form>
+      </div>
+  </main>
+</body>
+</html>
+<!-- END OF DOCUMENT -->
