@@ -24,14 +24,12 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = os.environ.get('SECRET_KEY', default='django-insecure-!0ij1*4t%x%)l_&=_)-@1de*9w5z5zm6*bi*p36x-s^45%3knm')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
 ALLOWED_HOSTS = ['*']
 
-RENDER_EXTERNAL_HOSTNAME = os.environ.get('RENDER_EXTERNAL_HOSTNAME')
+SCM_DO_BUILD_DURING_DEPLOYMENT = 1
 
-if RENDER_EXTERNAL_HOSTNAME:
-    ALLOWED_HOSTS.append(RENDER_EXTERNAL_HOSTNAME)
 
 STATIC_URL = '/static/'
 STATICFILES_DIRS = (

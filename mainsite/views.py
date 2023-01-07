@@ -4,37 +4,23 @@ from django.shortcuts import render
 import os
 import json
 import pandas as pd
-
 from flair.embeddings import TransformerDocumentEmbeddings
 from flair.data import Sentence
-
+import json
+import torch
 from sentence_transformers import util
 
 def cosine_sim(em1, em2):
     return util.cosine_sim(em1, em2)
 
 embedding = TransformerDocumentEmbeddings('xlm-roberta-base')
-
 embeddings = []
 
-data = []
+with open('mydata.json','r+') as f:
+    embeddings = json.load(f)
 
-for i in range (1,102):
-    file_name = "../../documents/" + str(i) + ".txt"
-    if(os.path.exists(file_name)):
-        with open(file_name, "r", encoding="utf-8") as f:
-            contents = f.read()
-            data.append(contents)
-    else:
-        print("Error message here")
-
-
-for i in range (0, 101):
-    
-    sentence = Sentence(data[i])
-    embedding.embed(sentence)
-    
-    embeddings.append(sentence.get_embedding())
+for k in embeddings:
+    k['embedding'] = torch.Tensor(k['embedding'])
 
 
 def N_max_elements(list, N):
@@ -78,7 +64,7 @@ def results(request):
         sim = []
 
         for i in range (0, 100):
-            sim.append(util.cos_sim(inp_embedding, embeddings[i])[0])
+            sim.append(util.cos_sim(inp_embedding, embeddings[i]['embedding'])[0])
 
 
         result_list = N_max_elements(sim, 10)
@@ -88,7 +74,7 @@ def results(request):
         res_file_names = []
         for res in result_list:
 
-            file_name = "../../documents/" + str(res+1) + ".txt"
+            file_name = "documents/" + str(res+1) + ".txt"
 
             if(os.path.exists(file_name)):
                 with open(file_name, "r", encoding="utf-8") as f:
