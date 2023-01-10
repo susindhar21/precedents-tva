@@ -1,29 +1,46 @@
 {% load static %}
-<!-- HTML Code begins -->
-<!DOCTYPE html>
-<html lang = 'en'>
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width">
-  <title>முன்னோடி தேடல்</title>
-  <!-- Stylesheets -->
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" rel="stylesheet" />
-  <link href="{% static 'css/rent_style.css' %}" rel="stylesheet" type="text/css" />
-</head>
-<body>
-  <main class ='main'>
-      <div class = "center">
-      <img src = "{% static 'img/logo.png' %}" style="width:auto; height:30%"><br>
-      <h2>கமாவால் பிரிக்கப்பட்ட சொற்களை உள்ளிடவும்.</h2>
-      <br>
-      <form action = "/mainsite/results" method = "post">
-        {% csrf_token %}
-        <input type="text" id="search1" name="inpkeywords">
-        <br>
-        &nbsp;&nbsp;<button class = "btn btn-dark" type="submit" name="submit" value="Search">தேடு</button>
-      </form>
-      </div>
-  </main>
-</body>
+<html style="zoom: 90%">
+    <head>
+        <title>முன்னோடி தேடல்</title>
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" rel="stylesheet" />
+    </head>
+    <body style="background-color: #f1f2f6">
+        <div class = "row mt-4 pb-4 justify-content-center text-center">
+            <img src = "{% static 'img/logos-new.png' %}" style="height:150px; margin: 0px; padding: 0px;">
+        </div>
+        <div class = "container" style="background-color: white; border-radius: 20px; padding-bottom: 5px; width: 50%">
+            
+            <div class = "row mt-4 pt-4 pb-4 justify-content-center">
+                <h3>முன்னோடி தேடல்</h3>
+            </div>
+            <div class = "row mt-3 justify-content-center">
+                <div class = "col-10">
+                  <form action = "/mainsite/results" method = "post">
+                    {% csrf_token %}
+                    <div class="input-group rounded">
+                        <input type="search" name="inpkeywords" class="form-control rounded" placeholder="கமாவால் பிரிக்கப்பட்ட தமிழ் சொற்களை உள்ளிடவும்..." aria-label="Search" aria-describedby="search-addon"/>&nbsp;&nbsp;
+                        <button class = "btn btn-dark" type="submit" name="submit" value="Search">தேடு</button>
+                    </div>
+                  </form>
+                </div>
+            </div>
+            <div class = "row mt-5 pb-3 justify-content-center">
+                <div class = "col-10 pl-5" style="font-size:0.9rem">
+                    <h5 style="padding-top:25px;">எடுத்துக்காட்டு உள்ளீடுகள்: </h5>
+                    <ul style="padding-top: 9px;">
+                        <li>காவலர்‌, சிறை, புலனாய்வு</li>
+                        <li>கொழிலாளர், பணியாளர்களை துறைசார்‌ செயல்பாட்டு, உணவைக்‌ கையாஞும்‌ பணி</li>
+                        <li>கொள்முதல், அனுப்பாணை, நிலுவை</li>
+                    </ul>
+                </div>
+            </div>
+            
+        </div>
+        <div class="row pt-5 mt-3 justify-content-center text-center">
+            <div class = "col">
+                <p>Made by Susindhar and Team.<br>Mentored by Dr. Ilakiyaselvan N<br>VIT Chennai</p>
+
+            </div>
+        </div>
+    </body>
 </html>
-<!-- END OF DOCUMENT -->

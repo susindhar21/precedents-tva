@@ -1,53 +1,43 @@
 {% load static %}
-<!-- HTML Code begins -->
-<!DOCTYPE html>
-<html lang = 'en'>
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width">
-  <title>முன்னோடி தேடல்</title>
-  <!-- Stylesheets -->
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" rel="stylesheet" />
-  <link href="{% static 'css/rent_style.css' %}" rel="stylesheet" type="text/css" />
-</head>
-<body>
-  <main class ='main'>
-    
-    <!-- Page content begins here -->
-    <div class = "row justify-content-center">
-      <div class = "center">
-      <img src = "{% static 'img/logo.png' %}" style="width:auto; height:10%"><br>
-      <h1>முடிவுகள்</h1>
-      <br><br>
-        
-      {% for item in data %}
-      <div class = "container">
-        <div class = "column">
-          <!-- Each search result will be displayed as a separate card -->
-          <div class="card">
-            <h3 class="card-header bg-secondary text-white"></h3>
-            <div class="card-body">
-              <form id = "cardetails" name = "cardetails" action = "" method = "post">
-                <dl class="row">
-                <dt class="col-6">பக்கம் எண்</dt>
-                <dd name = "rate" class="col-6">{{ item.id }}</dd>
-                </dl>
-                <br>
-                <a href="../static/img/pages/{{ item.id }}.jpg"><button type = "button" name = "book" type = "submit" class = "btn btn-dark">பக்கத்திற்கு செல்</button></a>
-              </form>
-            </div>
-          </div>
-          <br>
+<html style="zoom: 90%">
+    <head>
+        <title>முன்னோடி தேடல்</title>
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" rel="stylesheet" />
+    </head>
+    <body style="background-color: #f1f2f6">
+        <div class = "row mt-4 pb-4 justify-content-center text-center">
+            <img src = "{% static 'img/logos-new.png' %}" style="height:150px; margin: 0px; padding: 0px;">
         </div>
-      </div>
-      <!-- Ending the loop -->
-      {% endfor %}
+        <div class = "container" style="background-color: white; border-radius: 20px; padding-bottom: 5px; width: 30%">
+            
+            <div class = "row mt-4 pt-4 pb-4 justify-content-center">
+                <h3>முடிவுகள்</h3>
+            </div>
+            {% for item in data %}
+              <div class = "row mt-3 justify-content-center">
+                  <div class="card" style="width:80%; border: none">
+                    <div class="card-body">
+                      <form id = "cardetails" name = "cardetails" action = "" method = "post">
+                        <dl class="row">
+                        <dt class="col-8" style="font-size: 1.2rem">பக்கம் எண்</dt>
+                        <dd name = "rate" style="font-size: 1.5rem" class="col-4 float-right">{{ item.id }}</dd>
+                        </dl>
+                        <br>
+                        <a href="../static/img/pages/{{ item.id }}.jpg" class="float-right"><button type = "button" name = "book" type = "submit" class = "btn btn-dark">திறக்கவும்</button></a>
+                      </form>
+                    </div>
+                </div>
+                <br>
+              </div>
+              <hr style="width:80%; border-top: 2px solid darkgrey;">
+              <br>
+            {% endfor %}
+        </div>
+        <div class="row pt-5 mt-3 justify-content-center text-center">
+            <div class = "col">
+                <p>Made by Susindhar and Team.<br>Mentored by Dr. Ilakiyaselvan N<br>VIT Chennai</p>
 
-
-
-      </div>
-    </div>  
-  </main>
-</body>
+            </div>
+        </div>
+    </body>
 </html>
-<!-- END OF DOCUMENT -->
